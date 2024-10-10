@@ -1,17 +1,23 @@
 N,K=map(int,input().split()) 
 
-lst = list(map(int, input().split()))
-lst = [k-4 for k in lst]
-l3=[[] for _ in range(N+1)]
-l3[0]=lst
-for j in range(N):
-    for i in l3[j]:
-        if i >= 0:
-            l3[j+1].append(i)
-    l3[j+1]=[k-4 for k in l3[j+1]]
+B = list(map(int, input().split()))
+B= [b-K for b in B]
+lst=[[b] for b in B]
+
+for n in range(1,N+1):
+    for l in lst:
+        for b in B:
+            if sum(l)+b>=0:
+                lst.append(l+[b])
+    for j in lst:
+        if len(j)!=n+1:
+            lst.remove(j) 
+
+print(lst)
 
 
 
 
-print(l3)
+
+
 
